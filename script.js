@@ -36,6 +36,7 @@
   const spinBtn = document.getElementById("spinBtn");
   const resultEl = document.getElementById("result");
   const resultTextEl = document.getElementById("resultText");
+  const shareBtn = document.getElementById("shareBtn");
 
   const editBtn = document.getElementById("editBtn");
   const editDialog = document.getElementById("editDialog");
@@ -54,6 +55,7 @@
   let prompts = loadPrompts();
   let currentRotation = 0;
   let spinning = false;
+  let currentResultText = "";
 
   function loadPrompts() {
     try {
@@ -184,8 +186,71 @@
   }
 
   function showResult(text) {
+    currentResultText = text;
     resultTextEl.textContent = text;
     resultEl.hidden = false;
+  }
+
+  function buildResultCard(text) {
+    const card = document.createElement("canvas");
+    card.width = 800;
+    card.height = 1000;
+    const c = card.getContext("2d");
+
+    const grad = c.createLinearGradient(0, 0, 0, card.height);
+    grad.addColorStop(0, "#4a2e52");
+    grad.addColorStop(1, "#2b1e3d");
+    c.fillStyle = grad;
+    c.fillRect(0, 0, card.width, card.height);
+
+    c.textAlign = "center";
+    c.fillStyle = "#fdf6ff";
+    c.font = "700 64px -apple-system, sans-serif";
+    c.fillText("cozy 🌙", card.width / 2, 150);
+
+    c.font = "400 28px -apple-system, sans-serif";
+    c.fillStyle = "rgba(253,246,255,0.7)";
+    c.fillText("THE WHEEL SAYS…", card.width / 2, 210);
+
+    c.font = "700 52px -apple-system, sans-serif";
+    c.fillStyle = "#ffffff";
+    const lines = wrapText(c, text, card.width * 0.78);
+    const lineHeight = 66;
+    const startY = card.height / 2 - ((lines.length - 1) * lineHeight) / 2;
+    lines.forEach((line, i) => c.fillText(line, card.width / 2, startY + i * lineHeight));
+
+    c.font = "400 24px -apple-system, sans-serif";
+    c.fillStyle = "rgba(253,246,255,0.6)";
+    c.fillText("sent with cozy 🌙", card.width / 2, card.height - 60);
+
+    return card;
+  }
+
+  function shareResult() {
+    if (!currentResultText) return;
+    const card = buildResultCard(currentResultText);
+    card.toBlob(async (blob) => {
+      if (!blob) return;
+      const file = new File([blob], "cozy-wheel.png", { type: "image/png" });
+
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({ files: [file], title: "cozy", text: currentResultText });
+          return;
+        } catch {
+          // user cancelled the share sheet, or share failed — fall back to download
+        }
+      }
+
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "cozy-wheel.png";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+    }, "image/png");
   }
 
   function resizeConfettiCanvas() {
@@ -242,6 +307,7 @@
   }
 
   spinBtn.addEventListener("click", spin);
+  shareBtn.addEventListener("click", shareResult);
 
   editBtn.addEventListener("click", () => {
     promptsArea.value = prompts.join("\n");
