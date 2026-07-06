@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+<title>cozy 🌙 a wheel for two</title>
+<meta name="description" content="A cozy spinning wheel game for long distance couples." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💌</text></svg>" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="stars" aria-hidden="true"></div>
+
+<main class="app">
+  <header class="app__header">
+    <h1>cozy <span class="app__moon">🌙</span></h1>
+    <p class="app__tagline">spin it, screenshot it, send it to your person</p>
+  </header>
+
+  <div class="wheel-wrap">
+    <div class="pointer" aria-hidden="true">▼</div>
+    <canvas id="wheel" width="640" height="640" role="img" aria-label="Spinning wheel of prompts"></canvas>
+    <button id="spinBtn" class="spin-btn" type="button">SPIN</button>
+  </div>
+
+  <section id="result" class="result" hidden>
+    <p class="result__eyebrow">the wheel says…</p>
+    <p id="resultText" class="result__text"></p>
+    <p class="result__hint">📸 screenshot this and send it to them</p>
+  </section>
+
+  <div class="actions">
+    <button id="editBtn" class="ghost-btn" type="button">✎ edit prompts</button>
+    <button id="howBtn" class="ghost-btn" type="button">? how to play</button>
+  </div>
+</main>
+
+<dialog id="editDialog" class="dialog">
+  <form method="dialog" id="editForm">
+    <h2>edit your wheel</h2>
+    <p class="dialog__hint">one prompt per line. saved only on this device.</p>
+    <textarea id="promptsArea" rows="10" spellcheck="false"></textarea>
+    <div class="dialog__actions">
+      <button type="button" id="resetPromptsBtn" class="ghost-btn">reset to defaults</button>
+      <div class="dialog__actions-right">
+        <button type="button" id="cancelEditBtn" class="ghost-btn">cancel</button>
+        <button type="submit" id="saveEditBtn" class="spin-btn spin-btn--small">save</button>
+      </div>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="howDialog" class="dialog">
+  <form method="dialog">
+    <h2>how to play</h2>
+    <ol class="how-list">
+      <li>Both of you open this page on your own phones — no need to be together.</li>
+      <li>One of you spins the wheel and lands on a prompt.</li>
+      <li>Screenshot the result and send it to your partner.</li>
+      <li>Your partner sends back a photo or video of themselves doing it. 💛</li>
+      <li>Now it's their turn to spin, and send you the screenshot back.</li>
+    </ol>
+    <div class="dialog__actions">
+      <div class="dialog__actions-right">
+        <button type="submit" class="spin-btn spin-btn--small">got it</button>
+      </div>
+    </div>
+  </form>
+</dialog>
+
+<canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
+
+<script src="script.js"></script>
+</body>
+</html>
