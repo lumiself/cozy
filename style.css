@@ -76,9 +76,18 @@ body {
 }
 
 .app__tagline {
-  margin: 6px 0 28px;
+  margin: 6px 0 10px;
   color: var(--ink-soft);
   font-size: 0.95rem;
+}
+
+.spin-count {
+  margin: 0 0 22px;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.75;
 }
 
 .wheel-wrap {
@@ -183,13 +192,9 @@ body {
 }
 
 .result__hint {
-  margin: 0 0 14px;
+  margin: 0;
   font-size: 0.85rem;
   color: var(--ink-soft);
-}
-
-.result__share {
-  width: 100%;
 }
 
 .actions {

@@ -6,11 +6,11 @@ No accounts, no backend, no app store — just a wheel and your phone's camera.
 
 ## How it works
 
-1. Both of you open the site on your own phone (it doesn't need to be the same device or even the same moment).
-2. One of you spins the wheel. It lands on a prompt.
-3. Screenshot the result and send it to your partner over text/iMessage/whatever you already use.
-4. Your partner replies with a photo or video doing what the wheel said.
-5. Swap — now it's their turn to spin and send you a screenshot back.
+1. Open the site on your own phone (it doesn't need to be the same device or even the same moment).
+2. Spin the wheel. It lands on a prompt.
+3. Screenshot the result and send it over text/iMessage/whatever you already use.
+4. Get a reply with a photo or video doing what the wheel said.
+5. Swap — now it's their turn to spin and send a screenshot back.
 
 Tap **✎ edit prompts** to write your own list of prompts (saved only on your device via `localStorage`, one per line, at least 2 required). Tap **reset to defaults** inside that editor to restore the built-in set.
 
