@@ -16,6 +16,19 @@
     "Send a photo of your favorite snack rn 🍫",
   ];
 
+  const SPICY_PROMPTS = [
+    "Send a voice note whispering what you'd do if I were there right now 😏",
+    "Give me your best 'come hither' look 👀",
+    "Send a slow, teasing video walking toward the camera",
+    "Tell me the first thing you'd do if I walked through your door right now",
+    "Send your flirtiest selfie 🔥",
+    "Send a voice note describing your favorite memory of us, slowly 🕯️",
+    "Send a photo biting your lip 😉",
+    "Text me the naughtiest thought you've had about me today",
+    "Send a photo of you in bed, thinking about me 🌙",
+    "Give me your best sultry eye-contact photo",
+  ];
+
   const PALETTE = ["#ff9ecb", "#ffd8a8", "#c9a7ff", "#a7e8bd", "#a7d8ff", "#ffb4a7"];
 
   const wheelCanvas = document.getElementById("wheel");
@@ -29,7 +42,8 @@
   const editForm = document.getElementById("editForm");
   const promptsArea = document.getElementById("promptsArea");
   const cancelEditBtn = document.getElementById("cancelEditBtn");
-  const resetPromptsBtn = document.getElementById("resetPromptsBtn");
+  const sweetPackBtn = document.getElementById("sweetPackBtn");
+  const spicyPackBtn = document.getElementById("spicyPackBtn");
 
   const howBtn = document.getElementById("howBtn");
   const howDialog = document.getElementById("howDialog");
@@ -236,8 +250,12 @@
 
   cancelEditBtn.addEventListener("click", () => editDialog.close());
 
-  resetPromptsBtn.addEventListener("click", () => {
+  sweetPackBtn.addEventListener("click", () => {
     promptsArea.value = DEFAULT_PROMPTS.join("\n");
+  });
+
+  spicyPackBtn.addEventListener("click", () => {
+    promptsArea.value = SPICY_PROMPTS.join("\n");
   });
 
   editForm.addEventListener("submit", (e) => {

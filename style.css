@@ -257,6 +257,12 @@ body {
   flex-wrap: wrap;
 }
 
+.dialog__actions-left {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .dialog__actions-right {
   display: flex;
   gap: 8px;
