@@ -15,7 +15,8 @@
 <main class="app">
   <header class="app__header">
     <h1>cozy <span class="app__moon">🌙</span></h1>
-    <p class="app__tagline">spin it, screenshot it, send it to your person</p>
+    <p class="app__tagline">spin it, screenshot it, send it</p>
+    <p id="spinCount" class="spin-count">0 spins</p>
   </header>
 
   <div class="wheel-wrap">
@@ -27,8 +28,7 @@
   <section id="result" class="result" hidden>
     <p class="result__eyebrow">the wheel says…</p>
     <p id="resultText" class="result__text"></p>
-    <p class="result__hint">📸 screenshot this, or tap below to send it straight over</p>
-    <button id="shareBtn" class="ghost-btn result__share" type="button">📤 share result</button>
+    <p class="result__hint">📸 screenshot this</p>
   </section>
 
   <div class="actions">
@@ -59,11 +59,11 @@
   <form method="dialog">
     <h2>how to play</h2>
     <ol class="how-list">
-      <li>Both of you open this page on your own phones — no need to be together.</li>
-      <li>One of you spins the wheel and lands on a prompt.</li>
-      <li>Screenshot the result and send it to your partner.</li>
-      <li>Your partner sends back a photo or video of themselves doing it. 💛</li>
-      <li>Now it's their turn to spin, and send you the screenshot back.</li>
+      <li>Open this page on your own phone — no need to be together.</li>
+      <li>Spin the wheel and land on a prompt.</li>
+      <li>Screenshot the result and send it.</li>
+      <li>Get back a photo or video doing it. 💛</li>
+      <li>Now it's their turn to spin.</li>
     </ol>
     <div class="dialog__actions">
       <div class="dialog__actions-right">
